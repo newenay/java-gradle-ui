@@ -1,0 +1,12 @@
+// build.gradle
+plugins {
+    id 'application' // Adds Java support and application execution capabilities
+}
+
+repositories {
+    mavenCentral() // Tells Gradle where to look for dependencies if needed
+}
+
+application {
+    mainClass = 'com.hello.Main' // Points Gradle to your main method
+}
