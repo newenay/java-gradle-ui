@@ -1,6 +1,11 @@
 package com.example;
 import com.google.inject.Inject;
 
+// Does not need to be public if it's in the same package as MainInstance
+interface MessageService {
+    void sendMessage(String msg);
+}
+
 public class MainInstance {
     private final MessageService service;
 
