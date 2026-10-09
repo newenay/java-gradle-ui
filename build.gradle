@@ -8,5 +8,10 @@ repositories {
 }
 
 application {
-    mainClass = 'com.hello.Main' // Points Gradle to your main method
+    mainClass = 'com.example.Main' // Points Gradle to your main method
+}
+
+dependencies {
+    implementation 'com.google.inject:guice:7.0.0'
+    implementation 'org.postgresql:postgresql:42.7.4'
 }

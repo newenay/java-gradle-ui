@@ -14,6 +14,7 @@ javac -version
 
 ## Typical Folder Structure
 
+```bash
 java-gradle/
 ├── build.gradle
 └── src/
@@ -22,10 +23,16 @@ java-gradle/
             └── com/
                 └── example/
                     └── Main.java
+```
 
 ```bash
 brew install gradle
 # ** use previously installed openjdk25 instead of v27 **
 
+# clear cache to download new dependencies
+rm -rf $HOME/.gradle/caches/
 gradle run
+
+# publishes to Develocity (full report)
+gradle run --scan
 ```
