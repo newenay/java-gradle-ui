@@ -6,4 +6,3 @@ public class WeezeGuice implements MessageService {
         System.out.println("Sending message: " + msg);
     }
 }
-
