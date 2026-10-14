@@ -44,4 +44,8 @@ gradle run
 
 # publishes to Develocity (full report)
 gradle run --scan
+
+# Adds gradlew files
+gradle wrapper
+./gradlew run
 ```
