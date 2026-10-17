@@ -14,9 +14,13 @@ javac -version
 
 # $PATH_TO_FX: '/Library/Java/JavaFx/javafx-sdk-25.0.4/lib'
 # Creates a Main.class File
-javac --module-path $PATH_TO_FX --add-modules javafx.controls src/main/java/com/example/Main
+javac --module-path $PATH_TO_FX --add-modules javafx.controls src/main/java/com/example/Main.java
+
+### Guice Dependency memory override
+java --sun-misc-unsafe-memory-access=allow
+
 # Run
-java --module-path $PATH_TO_FX --add-modules javafx.controls src/main/java/com/example/Main.java
+java --module-path $PATH_TO_FX --add-modules javafx.controls src/main/java/com/example/Main.java 
 ```
 
 ## Typical Folder Structure
@@ -40,7 +44,7 @@ brew install gradle
 
 # clear cache to download new dependencies
 rm -rf $HOME/.gradle/caches/
-gradle run
+gradle clean build --warning-mode all
 
 # publishes to Develocity (full report)
 gradle run --scan

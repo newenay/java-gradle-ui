@@ -1,16 +1,17 @@
 // 
 plugins {
-    // id 'java' // Adds Java support
+    id 'java' // Adds Java support
     id 'application' // Adds Java support and application execution capabilities
     id 'org.openjfx.javafxplugin' version '0.1.0'
 }
 
 repositories {
-    mavenCentral() // Add this if it's missing
+    mavenCentral{
+        name = "Maven Central"
+    }
 }
 
 javafx {
-    sdk = '/Library/Java/JavaFx/javafx-sdk-25.0.4'
     version = '25' // Use JavaFX 11+, 17+, or 21+ for native arm64 support
     modules = ['javafx.controls']
     platform = 'mac' // Use 'linux-aarch64' for Linux ARM64 systems
@@ -19,8 +20,15 @@ javafx {
 dependencies {
     implementation 'com.google.inject:guice:7.0.0'
     implementation 'org.postgresql:postgresql:42.7.4'
+    // implementation 'org.apache.commons:commons-lang3:3.12.0' 
 }
 
 application {
     mainClass = 'com.example.Main' // Points Gradle to your main method
+}
+
+run {
+    if (JavaVersion.current().isCompatibleWith(JavaVersion.VERSION_23)) {
+        jvmArgs '--sun-misc-unsafe-memory-access=allow'
+    }
 }
