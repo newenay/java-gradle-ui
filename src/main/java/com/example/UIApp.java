@@ -4,21 +4,39 @@ import com.google.inject.Guice;
 import com.google.inject.Injector;
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.VBox;
+import javafx.scene.control.*;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
 public class UIApp extends Application {
+    @Override
     public void start(Stage stage) {
         TextField inputField = new TextField();
-        TextField outputField = new TextField();
-        TextField debugField = new TextField();
-        Button executeBtn = new Button("Execute");
-        Label outputLabel = new Label("Foo");
+        inputField.setPromptText("Enter message for Guice...");
 
-        VBox root = new VBox(10, inputField, executeBtn, outputField, debugField, outputLabel);
+        Button executeBtn = new Button("Execute");
+
+        TextField outputField = new TextField();
+        // outputField.setReadOnly(true);
+        outputField.setPromptText("Output will appear here...");
+
+        TextField debugField = new TextField();
+        // debugField.setReadOnly(true);
+        debugField.setPromptText("Debug/Errors will appear here...");
+
+        VBox root = new VBox(15, inputField, executeBtn, outputField, debugField);
+        // root.setPadding(new Insets(20));
+        root.setStyle(
+                "-fx-background-color: #f5f5f5;" +
+                        "-fx-font-family: 'Segoe UI';");
+
+        executeBtn.setStyle(
+                "-fx-background-color: #007bff;" +
+                        "-fx-text-fill: white;" +
+                        "-fx-padding: 10 20;" +
+                        "-fx-border-radius: 5;" +
+                        "-fx-background-radius: 5;");
+
         Scene scene = new Scene(root, 400, 300);
 
         executeBtn.setOnAction(e -> {
@@ -27,18 +45,20 @@ public class UIApp extends Application {
                 Injector injector = Guice.createInjector(new AppModule());
                 MessageService service = injector.getInstance(MessageService.class);
                 service.sendMessage(input);
-                outputField.setText("Message sent: " + input);
-                debugField.setText("SUCCESS");
+                outputField.setText("Message sent successfully: " + input);
+                debugField.setText("Status: OK");
             } catch (Exception ex) {
                 outputField.setText("Error occurred");
-                debugField.setText(ex.getMessage());
+                debugField.setText("Error: " + ex.getMessage());
             }
         });
 
+        stage.setTitle("Guice UI Application");
         stage.setScene(scene);
-        stage.setTitle("Guice UI");
         stage.show();
     }
+
+    public static void main(String[] args) {
+        launch(args);
+    }
 }
-
-

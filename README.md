@@ -22,22 +22,13 @@ java --sun-misc-unsafe-memory-access=allow
 # Run
 java --module-path $PATH_TO_FX --add-modules javafx.controls src/main/java/com/example/Main.java 
 ```
+This project is a boiler plate JavaFX WebUI combined with a Guice Messenger.  
 
-## Typical Folder Structure
+### TODO:
+1. Continue to refine and reduce the boilerplate down to its simplest level
+1. Then implement a database
 
-```bash
-java-gradle-ui/
-├── build.gradle
-└── src/
-    └── main/
-        └── java/
-            └── com/
-                └── example/
-                    ├── AppModule.java
-                    └── Main.java
-
-```
-
+## Run the project
 ```bash
 brew install gradle
 # ** use previously installed openjdk25 instead of v27 **
@@ -51,5 +42,10 @@ gradle run --scan
 
 # Adds gradlew files
 gradle wrapper
+# Verify connections to JVM
+./gradlew --version
+./gradlew javaToolChains
+
 ./gradlew run
+# Ctrl + c 
 ```
