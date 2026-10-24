@@ -13,7 +13,7 @@ repositories {
 
 javafx {
     version = '25' // Use JavaFX 11+, 17+, or 21+ for native arm64 support
-    modules = ['javafx.controls']
+    modules = ['javafx.controls', 'javafx.fxml']
     platform = 'mac' // Use 'linux-aarch64' for Linux ARM64 systems
 }
 
@@ -28,7 +28,17 @@ application {
 }
 
 run {
+    jvmArgs '--add-modules=javafx.controls,javafx.fxml',
+            '--sun-misc-unsafe-memory-access=allow'
     if (JavaVersion.current().isCompatibleWith(JavaVersion.VERSION_23)) {
         jvmArgs '--sun-misc-unsafe-memory-access=allow'
+    }
+}
+
+sourceSets {
+    main {
+        resources {
+            srcDirs = ['src/main/java', 'src/main/resources']
+        }
     }
 }
