@@ -82,20 +82,11 @@ This project is a boiler plate JavaFX WebUI combined with a Guice Messenger.
                       │ (domain logic)   │
                       └──────────────────┘
 ```
-
-## Install Java JDK25
-
+#
+## Install JavaFX
 ```bash
-brew install --cask temurin@25
-java -version
+export PATH_TO_FX='/Library/Java/JavaFx/javafx-sdk-25.0.4/lib'
 
-# Compiler
-javac -version
-
-# Get all version paths
-/usr/libexec/java_home -V
-
-# $PATH_TO_FX: '/Library/Java/JavaFx/javafx-sdk-25.0.4/lib'
 # Creates a Main.class File
 javac --module-path $PATH_TO_FX --add-modules javafx.controls src/main/java/com/example/Main.java
 
@@ -106,7 +97,7 @@ java --sun-misc-unsafe-memory-access=allow
 java --module-path $PATH_TO_FX --add-modules javafx.controls src/main/java/com/example/Main.java 
 ```
 
-## Run the project
+## Gradle - Run the project
 ```bash
 brew install gradle
 # ** use previously installed openjdk25 instead of v27 **
