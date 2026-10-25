@@ -51,6 +51,7 @@ public class UIApp extends Application {
         }
     }
     
+    // Tie in postgresql or json dummy data (see DatabaseExample)
     public static class ProductDAO {
         private final Cart cart;
         
